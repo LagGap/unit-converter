@@ -25,11 +25,13 @@ public class ConverterController : Controller
         return View();
     }
 
-    public void Test()
+    public IActionResult ConversionResult(ConverterViewModel converterVM)
     {
-        Debug.WriteLine("test");
-
+        Debug.Print("asdf");
+        // créer la nouvelle page
+        return View();
     }
+
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {
