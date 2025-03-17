@@ -2,7 +2,7 @@ namespace UnitConverter.Models;
 
 public class ConverterViewModel
 {
-    public string? ToConvert { get; set; }
+    public double ToConvert { get; set; } /*= 0;*/
     public string? FromUnit { get; set; }
     public string? ToUnit { get; set; }
     public string? ConvertionType { get; set; }

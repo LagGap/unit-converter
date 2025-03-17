@@ -19,17 +19,17 @@ public class UnitsConverter
         {"gram", 1},
         {"kilogram", 1000},
         {"ounce", 28.3495},
-        {"pound", 453.592 }
+        {"pound", 453.592}
     };
 
-    public double ConvertLenght(double inputValue, string fromUnit, string toUnit)
+    public double? ConvertLenght(double inputValue, string fromUnit, string toUnit)
     {
         double fromUnitValue = lenghtMapping[fromUnit] * inputValue;
         return fromUnitValue / lenghtMapping[toUnit];
     }
     public double ConvertWeight(double inputValue, string fromUnit, string toUnit)
     {
-        double fromUnitValue = weightMapping[fromUnit] * inputValue;
+        double fromUnitValue = (weightMapping[fromUnit] * inputValue);
         return fromUnitValue / weightMapping[toUnit];
     }
 

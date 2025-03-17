@@ -7,10 +7,12 @@ namespace UnitConverter.Controllers;
 public class ConverterController : Controller
 {
     private readonly ILogger<ConverterController> _logger;
+    private readonly UnitsConverter converter;
 
     public ConverterController(ILogger<ConverterController> logger)
     {
         _logger = logger;
+        converter = new();
     }
     public IActionResult LenghtConverter()
     {
@@ -27,18 +29,23 @@ public class ConverterController : Controller
 
     public IActionResult ConversionResult(ConverterViewModel converterVM)
     {
+        double? converted = 0;
         switch (converterVM.ConvertionType)
         {
             case "lenght":
+                if (converterVM.FromUnit != null && converterVM.ToUnit != null && converterVM.ToConvert != null) // after I check if the strings are not null
+                {
+                    converted = converter.ConvertLenght(converterVM.ToConvert, converterVM.FromUnit, converterVM.ToUnit);
+                }
                 break;
             case "temperature":
                 break;
             case "weight":
                 break;
         }
-
-        // créer la nouvelle page
-        return View();
+        
+        ResultViewModel result = new ResultViewModel(converterVM, converted);
+        return View(result);
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
