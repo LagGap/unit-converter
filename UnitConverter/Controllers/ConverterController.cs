@@ -1,7 +1,7 @@
 using System.Diagnostics;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using UnitConverter.Models;
-
 namespace UnitConverter.Controllers;
 
 public class ConverterController : Controller
@@ -27,7 +27,16 @@ public class ConverterController : Controller
 
     public IActionResult ConversionResult(ConverterViewModel converterVM)
     {
-        Debug.Print("asdf");
+        switch (converterVM.ConvertionType)
+        {
+            case "lenght":
+                break;
+            case "temperature":
+                break;
+            case "weight":
+                break;
+        }
+
         // créer la nouvelle page
         return View();
     }
