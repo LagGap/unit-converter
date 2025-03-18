@@ -22,14 +22,14 @@ public class UnitsConverter
         {"pound", 453.592}
     };
 
-    public double? ConvertLenght(double inputValue, string fromUnit, string toUnit)
+    public double ConvertLenght(double inputValue, string fromUnit, string toUnit)
     {
         double fromUnitValue = lenghtMapping[fromUnit] * inputValue;
         return fromUnitValue / lenghtMapping[toUnit];
     }
     public double ConvertWeight(double inputValue, string fromUnit, string toUnit)
     {
-        double fromUnitValue = (weightMapping[fromUnit] * inputValue);
+        double fromUnitValue = weightMapping[fromUnit] * inputValue;
         return fromUnitValue / weightMapping[toUnit];
     }
 
@@ -61,8 +61,7 @@ public class UnitsConverter
         switch (toUnit)
         {
             case "celsius":
-                return convertedInputValue;
-                
+                return convertedInputValue;                
             case "fahrenheit":
                 convertedInputValue = convertedInputValue * 9 / 5 + 32 ;
                 break;
@@ -75,5 +74,4 @@ public class UnitsConverter
 
         return convertedInputValue;
     }
-
 }

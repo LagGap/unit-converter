@@ -6,4 +6,10 @@
 
 <h1>@ViewData["Title"]</h1>
 
-<p>@Model.converterViewModel.FromUnit</p>
+<div class="col">
+    <p>The result of your calculation</p>
+    <div class="row">
+        <p>@Model.ConverterViewModel.ToConvert in @Model.ConverterViewModel.FromUnit is @Model.ConvertedUnit in
+            @Model.ConverterViewModel.ToUnit</p>
+    </div>
+</div>

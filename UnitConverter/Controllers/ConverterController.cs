@@ -29,22 +29,24 @@ public class ConverterController : Controller
 
     public IActionResult ConversionResult(ConverterViewModel converterVM)
     {
-        double? converted = 0;
-        switch (converterVM.ConvertionType)
+        double converted = 0;
+        if (converterVM.UnitsAreValid())
         {
-            case "lenght":
-                if (converterVM.FromUnit != null && converterVM.ToUnit != null && converterVM.ToConvert != null) // after I check if the strings are not null
-                {
+            switch (converterVM.ConvertionType)
+            {
+                case "lenght":
                     converted = converter.ConvertLenght(converterVM.ToConvert, converterVM.FromUnit, converterVM.ToUnit);
-                }
-                break;
-            case "temperature":
-                break;
-            case "weight":
-                break;
+                    break;
+                case "temperature":
+                    converted = converter.ConvertTemperature(converterVM.ToConvert, converterVM.FromUnit, converterVM.ToUnit);
+                    break;
+                case "weight":
+                    converted = converter.ConvertWeight(converterVM.ToConvert, converterVM.FromUnit, converterVM.ToUnit);
+                    break;
+            }
         }
-        
-        ResultViewModel result = new ResultViewModel(converterVM, converted);
+
+        ResultViewModel result = new(converterVM, converted);
         return View(result);
     }
 
@@ -53,4 +55,5 @@ public class ConverterController : Controller
     {
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
+
 }

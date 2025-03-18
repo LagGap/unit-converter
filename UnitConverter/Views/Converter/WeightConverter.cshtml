@@ -1,20 +1,21 @@
-﻿@{
+﻿@model ConverterViewModel;
+@{
     ViewData["Title"] = "Weight Converter";
 }
 <h1>@ViewData["Title"]</h1>
 
-<form asp-controller="ConverterController" asp-action="Test">
+<form asp-action="ConversionResult" method="post">
     <div class="form-group row">
         <label class="col-sm-3 col-form-label">Enter the weight to Convert</label>
         <div class="col-sm-6">
-            <input type="number" name="LenghtToConvert" class="form-control" placeholder="123">
+            <input asp-for="ToConvert" type="number" name="ToConvert" class="form-control" min="0">
         </div>
     </div>
 
 <div class="form-group row">
     <div class="col">
-        <label class="col-sm-4 col-form-label">Unit to Convert from</label>
-        <select class="form-control">
+        <label asp-for="FromUnit" class="col-sm-4 col-form-label">Unit to Convert from</label>
+        <select asp-for="FromUnit" class="form-control">
             <option value="milligram">Milligram</option>
             <option value="gram">Gram</option>
             <option value="kilogram">Kilogram</option>
@@ -24,8 +25,8 @@
     </div>
 
     <div class="col">
-        <label class="col-sm-4 col-form-label">Unit to Convert to</label>
-        <select class="form-control">
+        <label asp-for="ToUnit" class="col-sm-4 col-form-label">Unit to Convert to</label>
+        <select asp-for="ToUnit" class="form-control">
             <option value="milligram">Milligram</option>
             <option value="gram">Gram</option>
             <option value="kilogram">Kilogram</option>
@@ -34,6 +35,8 @@
         </select>
     </div>
 </div>
+
+<input type="hidden" asp-for="ConvertionType" value="weight" />
 
 <div class="form-group">
     <button class="btn btn-primary align-center">Convert</button>
