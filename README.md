@@ -55,10 +55,10 @@ Follow these steps to get the application up and running on your local machine:
 
 6. **Architecture**
 
-   ```Controllers/```Controls the passage from the form views to the result with the converted unit \
-   ```Models/ ```Contains the different viewmodels for transferring data from a view to another and the unit converter \
-   ```Views/``` Contains all the views for the different forms and the result of the conversion \
-   ```Programs.cs/``` Responsible to launch the application
+   ```Controllers/:```Controls the passage from the form views to the result with the converted unit \
+   ```Models/:```Contains the different viewmodels for transferring data from a view to another and the unit converter \
+   ```Views/:``` Contains all the views for the different forms and the result of the conversion \
+   ```Programs.cs/:``` Responsible to launch the application
 
 ## License
 
